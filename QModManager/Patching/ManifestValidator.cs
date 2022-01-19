@@ -53,14 +53,8 @@
 
             switch (mod.Game)
             {
-                case "BelowZero":
-                    mod.SupportedGame = QModGame.BelowZero;
-                    break;
-                case "Both":
-                    mod.SupportedGame = QModGame.Both;
-                    break;
-                case "Subnautica":
-                    mod.SupportedGame = QModGame.Subnautica;
+                case "GraveyardKeeper":
+                    mod.SupportedGame = QModGame.GraveyardKeeper;
                     break;
                 default:
                 {

@@ -70,21 +70,6 @@ namespace QModManager.Patching
 
                 PatchHarmony();
 
-                if (NitroxCheck.IsInstalled)
-                {
-                    Logger.Fatal($"Nitrox was detected!");
-
-                    new Dialog()
-                    {
-                        message = "Both QModManager and Nitrox detected. QModManager is not compatible with Nitrox. Please uninstall one of them.",
-                        leftButton = Dialog.Button.Disabled,
-                        rightButton = Dialog.Button.Disabled,
-                        color = Dialog.DialogColor.Red,
-                    }.Show();
-
-                    return;
-                }
-
                 VersionCheck.Check();
 
                 Logger.Info("Started loading mods");

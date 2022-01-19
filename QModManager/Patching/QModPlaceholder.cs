@@ -15,7 +15,7 @@
             DisplayName = "QModManager",
             Author = "QModManager",
             LoadedAssembly = Assembly.GetExecutingAssembly(),
-            SupportedGame = QModGame.Both,
+            SupportedGame = QModGame.GraveyardKeeper,
         };
 
         private QModPlaceholder()

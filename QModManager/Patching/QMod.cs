@@ -48,7 +48,7 @@
         public bool Enable { get; set; } = true;
 
         [JsonProperty]
-        public string Game { get; set; } = $"{QModGame.Subnautica}";
+        public string Game { get; set; } = $"{QModGame.GraveyardKeeper}";
 
         [JsonProperty]
         public string AssemblyName { get; set; }

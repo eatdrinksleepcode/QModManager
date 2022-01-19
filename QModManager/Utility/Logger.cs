@@ -32,25 +32,16 @@
                 return;
 
             Console.WriteLine($"[{callingAssembly ?? GetCallingAssemblyName()}:DEBUG] {msg}");
-
-            if (showOnScreen)
-                ErrorMessage.AddDebug(msg);
         }
 
         private static void Info(string msg, bool showOnScreen = false, string callingAssembly = null)
         {
             Console.WriteLine($"[{callingAssembly ?? GetCallingAssemblyName()}:INFO] {msg}");
-
-            if (showOnScreen)
-                ErrorMessage.AddMessage(msg);
         }
 
         private static void Warn(string msg, bool showOnScreen = false, string callingAssembly = null)
         {
             Console.WriteLine($"[{callingAssembly ?? GetCallingAssemblyName()}:WARN] {msg}");
-
-            if (showOnScreen)
-                ErrorMessage.AddWarning(msg);
         }
 
         private static void Error(string msg = null, Exception ex = null, bool showOnScreen = false, string callingAssembly = null)
@@ -59,9 +50,6 @@
                 msg = (string.IsNullOrEmpty(msg) ? ex.ToString() : msg + Environment.NewLine + ex.ToString());
 
             Console.WriteLine($"[{callingAssembly ?? GetCallingAssemblyName()}:ERROR] {msg}");
-
-            if (showOnScreen && !string.IsNullOrEmpty(msg))
-                ErrorMessage.AddError(msg);
         }
 
         private static void Exception(Exception e, bool selfAssembly = false) => Error(null, e, false, selfAssembly ? AssemblyName : GetCallingAssemblyName());
@@ -71,9 +59,6 @@
             if (ex != null)
                 msg = (string.IsNullOrEmpty(msg) ? ex.ToString() : msg + Environment.NewLine + ex.ToString());
             Console.WriteLine($"[{callingAssembly ?? GetCallingAssemblyName()}:FATAL] {msg}");
-
-            if (showOnScreen && !string.IsNullOrEmpty(msg))
-                ErrorMessage.AddError(msg);
         }
 
         #endregion

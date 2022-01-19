@@ -18,8 +18,7 @@
         /// </summary>
         private static readonly Dictionary<QModGame, int> SupportedGameVersions = new Dictionary<QModGame, int>
         {
-            { QModGame.Subnautica, 0 },
-            { QModGame.BelowZero, 0 }
+            { QModGame.GraveyardKeeper, 0 },
         };
 
         internal bool IsValidGameRunning => SupportedGameVersions.ContainsKey(CurrentlyRunningGame);
@@ -28,25 +27,13 @@
 
         internal GameDetector()
         {
-            bool isSubnautica = Directory.GetFiles(Environment.CurrentDirectory, "Subnautica.exe", SearchOption.TopDirectoryOnly).Length > 0
-                || Directory.GetDirectories(Environment.CurrentDirectory, "Subnautica.app", SearchOption.TopDirectoryOnly).Length > 0;
-            bool isBelowZero = Directory.GetFiles(Environment.CurrentDirectory, "SubnauticaZero.exe", SearchOption.TopDirectoryOnly).Length > 0
-                || Directory.GetDirectories(Environment.CurrentDirectory, "SubnauticaZero.app", SearchOption.TopDirectoryOnly).Length > 0;
+            bool isGraveyardKeeper = Directory.GetFiles(Environment.CurrentDirectory, "GraveyardKeeper.exe", SearchOption.TopDirectoryOnly).Length > 0
+                                     || Directory.GetDirectories(Environment.CurrentDirectory, "GraveyardKeeper.app", SearchOption.TopDirectoryOnly).Length > 0;
 
-            if (isSubnautica && !isBelowZero)
+            if (isGraveyardKeeper)
             {
-                Logger.Info("Detected game: Subnautica");
-                CurrentlyRunningGame = QModGame.Subnautica;
-            }
-            else if (isBelowZero && !isSubnautica)
-            {
-                Logger.Info("Detected game: BelowZero");
-                CurrentlyRunningGame = QModGame.BelowZero;
-            }
-            else if (isSubnautica && isBelowZero)
-            {
-                Logger.Fatal("A fatal error has occurred. Both Subnautica and Below Zero files detected!");
-                throw new FatalPatchingException("Both Subnautica and Below Zero files detected!");
+                Logger.Info("Detected game: GraveyardKeeper");
+                CurrentlyRunningGame = QModGame.GraveyardKeeper;
             }
             else
             {
